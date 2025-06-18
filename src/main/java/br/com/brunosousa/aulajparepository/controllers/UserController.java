@@ -2,7 +2,8 @@ package br.com.brunosousa.aulajparepository.controllers;
 
 import br.com.brunosousa.aulajparepository.entities.User;
 import br.com.brunosousa.aulajparepository.repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +16,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/users", name = "Users")
+@RequiredArgsConstructor
 public class UserController {
-    @Autowired
-    private UserRepository repository;
+    
+    private final UserRepository repository;
 
     @GetMapping
     public ResponseEntity<List<User>> findAll() {
